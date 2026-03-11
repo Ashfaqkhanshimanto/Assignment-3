@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Collaborative Editor</title>
-<link rel="stylesheet" href="style.css">
+  <title>Collaborative Editor Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <h1>Collaborative Editor</h1>
 
-<h1>Collaborative Editor</h1>
+  <p>Enter a room name and password to continue.</p>
 
-<a href="editor.html">Open Editor</a>
+  <label>Room name</label>
+  <input type="text" id="room" placeholder="assignment-room">
 
+  <label>Password</label>
+  <input type="password" id="password" placeholder="Enter room password">
+
+  <br><br>
+  <button id="joinBtn">Open Editor</button>
+
+  <script>
+    document.getElementById("joinBtn").addEventListener("click", () => {
+      const room = document.getElementById("room").value.trim()
+      const password = document.getElementById("password").value.trim()
+
+      if (!room || !password) {
+        alert("Please enter both room name and password.")
+        return
+      }
+
+      localStorage.setItem("collab_room", room)
+      localStorage.setItem("collab_password", password)
+
+      window.location.href = "editor.html"
+    })
+  </script>
 </body>
 </html>
