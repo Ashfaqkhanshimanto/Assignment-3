@@ -1,20 +1,26 @@
 import express from "express"
+import http from "http"
+import { WebSocketServer } from "ws"
 import { Server } from "@hocuspocus/server"
 
-const WEB_PORT = 3000
-const WS_PORT = 1234
+const PORT = process.env.PORT || 3000
 
 const app = express()
 app.use(express.static("public"))
 
-app.listen(WEB_PORT, () => {
-  console.log(`Web page running at http://localhost:${WEB_PORT}`)
+const server = http.createServer(app)
+
+const hocuspocus = new Server({})
+
+const wss = new WebSocketServer({
+  server,
+  path: "/collaboration",
 })
 
-const server = new Server({
-  port: WS_PORT,
+wss.on("connection", (ws, req) => {
+  hocuspocus.handleConnection(ws, req)
 })
 
-server.listen()
-
-console.log(`WebSocket server running at ws://localhost:${WS_PORT}`)
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})

@@ -3,10 +3,13 @@ import { HocuspocusProvider } from "https://esm.sh/@hocuspocus/provider"
 
 const editor = document.getElementById("editor")
 
+const wsProtocol = location.protocol === "https:" ? "wss" : "ws"
+const wsUrl = `${wsProtocol}://${location.host}/collaboration`
+
 const ydoc = new Y.Doc()
 
 const provider = new HocuspocusProvider({
-  url: `${location.protocol === "https:" ? "wss" : "ws"}://${location.hostname}:1234`,
+  url: wsUrl,
   name: "demo-room",
   document: ydoc,
 })
