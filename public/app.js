@@ -6,7 +6,7 @@ const editor = document.getElementById("editor")
 const ydoc = new Y.Doc()
 
 const provider = new HocuspocusProvider({
-  url: "ws://localhost:1234",
+  url: `${location.protocol === "https:" ? "wss" : "ws"}://${location.hostname}:1234`,
   name: "demo-room",
   document: ydoc,
 })
