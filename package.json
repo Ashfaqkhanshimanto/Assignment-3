@@ -1,0 +1,13 @@
+{
+  "name": "yjs-collab-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@hocuspocus/server": "^3.2.5",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2"
+  }
+}
