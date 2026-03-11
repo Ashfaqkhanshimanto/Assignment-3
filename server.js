@@ -3,7 +3,7 @@ import http from "http"
 import { WebSocketServer } from "ws"
 import { Hocuspocus } from "@hocuspocus/server"
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 
 const app = express()
 app.use(express.static("public"))
