@@ -1,16 +1,16 @@
 import express from "express"
 import http from "http"
 import { WebSocketServer } from "ws"
-import { Server } from "@hocuspocus/server"
+import { Hocuspocus } from "@hocuspocus/server"
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 const app = express()
 app.use(express.static("public"))
 
 const server = http.createServer(app)
 
-const hocuspocus = new Server({})
+const hocuspocus = new Hocuspocus({})
 
 const wss = new WebSocketServer({
   server,
